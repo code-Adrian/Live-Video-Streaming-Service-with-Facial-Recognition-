@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Video Stream</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.5.1/socket.io.min.js"></script>
+    <style>
+        #body{
+            text-align: center;
+        }
+		#video-container {
+			text-align: center;
+		}
+
+		#video_stream {
+			display: block;
+			margin: 0 auto;
+		}
+
+		h1 {
+			display: inline-block;
+			margin-top: 50px;
+            text-align: center;
+		}
+	</style>
+</head>
+<body>
+    
+    <div id="video-container">
+        <h1 id = "video-header">ss</h1>
+        <img id="video_stream" width = "900" height= "700" src="" alt="Base64 Image" />
+    </div>
+	
+    <script>
+        var socket = io.connect('http://' + document.domain + ':' + location.port);
+
+        socket.on('connect', function() {
+            console.log('Connected');
+        });
+
+        socket.on('stream', function(package) {
+			//Unpack data
+            var data = package[0];
+            var total_clients = package[1];
+            //Target data
+			var base64Image = "data:image/jpeg;base64,"+data;
+			var img = document.getElementById("video_stream");
+            var header = document.getElementById("video-header");
+            //Assign data
+            header.textContent = "Face Recognition | Total Clients: " + total_clients;
+			img.src = base64Image;
+
+			console.log(data.length);
+        });
+		
+		 socket.on('disconnect', function() {
+            console.log('Disconnected');
+        });
+		
+    </script>
+</body>
+</html>
+
+
