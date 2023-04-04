@@ -35,9 +35,9 @@ procresult = []
 def sub_procs():
     time.sleep(1)
     #Starts sub process client for heavy face identifaction processing 
-    subprocess.Popen(['python', 'client.py',str(IP),str(PORT)])
+    subprocess.Popen(['python', 'face_detect_client.py',str(IP),str(PORT)])
     #Starts sub process client for constant broadcast
-    subprocess.Popen(['python', 'requester.py',str(IP),str(PORT)])
+    subprocess.Popen(['python', 'requester_client.py',str(IP),str(PORT)])
     print("Sub Processes Starting...")
 
 frame_counter = 0
