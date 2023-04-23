@@ -2,7 +2,7 @@
 
 This server uses Flask and SocketIO to stream video frames from a webcam and apply face recognition to the frames. To reduce lag and improve performance, it leverages sub-processes to handle video frame processing separately from the main server process. This allows for faster processing of video frames and reduces the chances of the server becoming unresponsive due to heavy processing loads.
 <p float="left" align="middle">
-<img src="https://res.cloudinary.com/dv5ambux0/image/upload/v1682270416/Diagram.drawio_pivr0t.png" alt="Example"/>
+<img src="https://res.cloudinary.com/dv5ambux0/image/upload/v1682270655/Diagram.drawio_2_kwerds.png" alt="Example"/>
 </p>
 
 
